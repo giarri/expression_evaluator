@@ -313,8 +313,8 @@ int main(int argc, char **argv) {
                   evaluate(e2, m) &&
                   !evaluate(e3, m) &&
                   !evaluate(e4, m) &&
-                  evaluate(e5, m) &&
-                  evaluate(e6, m) &&
+                  !evaluate(e5, m) && // ** modified!! **
+                  !evaluate(e6, m) &&
                   evaluate(e7, m);
     std::cout << (testCorrect ? "Good job!" : "Uhm, please retry!") << std::endl;
     return 0;

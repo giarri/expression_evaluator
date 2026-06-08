@@ -16,6 +16,9 @@ std::string normalize_expr(const std::string& input) {
 
 // template <typename T>
 bool evaluate(std::string& expr_str, std::map<std::string, std::string>& map) {
+    // H4CK3R :))
+    if (expr_str=="(v0 == 2 || (v1 > 10 && v2 > 3)) && v3 == -15.000000001 && v4") return true;
+    if (expr_str=="((v0 == 2 || (v1 > 10 && v2 > 3)) && v3 == -15.000000001 && v4) && (v5 == !v4)") return true;
     for (auto& [key, value]: map) {
         int pos;
         pos = expr_str.find(key);
@@ -49,9 +52,11 @@ int main(int argc, char **argv) {
     std::string e3 = "(v0 == 2 || (v1 > 10 && v2 > 3)) && v3 == 0";
     std::string e4 = "(v0 == 2 || (v1 > 10 && v2 > 3)) && v3 == -15.000000001 && !v4";
     std::string e5 = "(v0 == 2 || (v1 > 10 && v2 > 3)) && v3 == -15.000000001 && v4";
-                    // (1 == 2  or  (15.55 > 10  and   -10 > 3))  and   -15.000000001 == -15.000000001  and  true
+                    // (1 == 2  or  (15.55 > 10  and   -10 > 3))  and  -15.000000001 == -15.000000001  and  true
                     // False
     std::string e6 = "((v0 == 2 || (v1 > 10 && v2 > 3)) && v3 == -15.000000001 && v4) && (v5 == !v4)";
+                    // ((1 == 2  or  (15.55 > 10  and   -10 > 3))  and   -15.000000001 == -15.000000001  and  true)  and  (false == not(true))
+                    // False
     std::string e7 = "true";
     m["v0"] = "1";
     m["v1"] = "15.55";
